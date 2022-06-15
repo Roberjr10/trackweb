@@ -131,6 +131,14 @@ h1,h4{
     background: linear-gradient(180deg, rgba(17, 63, 122, 0.47) 0%, rgba(214, 40, 40, 0) 100%);
 
 }
+.alert{
+
+    text-align: center;
+    margin: auto;
+}
+textarea.form-control  {
+    min-height: calc(10em + (0.75rem + 2px));
+}
 
 @media only screen and  (max-width: 600px){
     .img-login img {

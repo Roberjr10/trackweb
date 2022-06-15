@@ -18,8 +18,7 @@ class UserController extends Controller
 
             return view('usuarios.acceso');
         }
-        //Hacer los metodos incluyendo el de crear proyecto
-    // y luego crear la tabla para hacer la migracion
+
     public function autenticar(Request $request){
 
         $credentials = $request->validate([

@@ -32,9 +32,7 @@ class FanController extends Controller
 
             return redirect()->intended('home')->withSuccess('Bienvenido');
         }
-        return back()->withDanger([
-            'email' => 'El email no esta registrado'
-        ]);
+        return back()->withDanger('El usuario no se encuentra en la bases de datos!!');
     }
 
     public function registro(){
@@ -63,9 +61,13 @@ class FanController extends Controller
             'user' => 0
 
         ]);
-        Auth::login($fan);
+        if(Auth::login($fan)) {
 
-        return redirect('home')->withSuccess('Te has registrado a trackweb');
+            return redirect('home')->withSuccess('Te has registrado a trackweb');
+        }else {
+            return back()->withDanger('La contraseña debe ser mayor que 8, el nick ya esta en la base de datos.');
+
+        }
     }
 
     public function salir(Request $request){

@@ -61,10 +61,10 @@
         </button>
         <div class="collapse navbar-collapse lista_menu" id="navbarNavAltMarkup">
             <div class="navbar-nav ">
-                <a class="nav-link" href="{{route('mostrarUser')}}">Productores</a>
-                <a class="nav-link" href="{{route('mostrarUser')}}">Artistas</a>
-                <a class="nav-link" href="{{route('fans')}}">Fans</a>
-                <a class="nav-link" href="{{route('buscador')}}">Buscador</a>
+                <a class="nav-link" href="{{url('mostrarUser')}}">Productores</a>
+                <a class="nav-link" href="{{url('mostrarUser')}}">Artistas</a>
+                <a class="nav-link" href="{{url('fans')}}">Fans</a>
+                <a class="nav-link" href="{{url('buscador')}}">Buscador</a>
             </div>
         </div>
     </div>
@@ -77,13 +77,18 @@
         <div class="col-xs-8 col-sm-6 col-md-4 col-lg-4">
             <!-- lista de fans, buscador y ajustes-->
             <div class="row text-center">
-                <div class="col-4">
+                <div class="col-4 menu_lateral">
 
                     @if(Auth::check())
                     <ul>
-                        <li>FANS</li>
-                        <li>Búscador</li>
-                        <li>Mi Perfil</li>
+                        @if(auth()->user()->user == 1)
+                            <a href="{{url('homeUser')}}"><li>Home</li></a>
+                        @else
+                            <a href="{{url('home')}}"><li>Home</li></a>
+                        @endif
+                        <a href="{{url('fans')}}"><li>FANS</li></a>
+                        <a href="{{url('buscador')}}"><li>Búscador</li></a>
+                        <a href="{{url('perfil/'. auth()->user()->id)}}"> <li>Mi Perfil</li></a>
                     </ul>
                     @endif
                 </div>

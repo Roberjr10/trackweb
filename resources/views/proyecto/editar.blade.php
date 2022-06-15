@@ -16,14 +16,14 @@
         </div>
         <div class="form-group col-6">
             <label for="audio">Sube tu proyecto con formato .mp3</label>
-            <input type="file" class="form-control" id="audio" name="audio" value="{{$row->mptres}}">
+            <input type="file" class="form-control" id="audio" name="audio" value="{{$row->mptres}}" accept=".mp3">
         </div>
         <br>
         <div class="form-group col-6">
             <label for="imagen">Imagen del proyecto</label>
             <div class="editar_img">
                 <span>Imagen</span>
-                <input type="file" name="imagen" id="imagen" style="margin-bottom: 1rem">
+                <input type="file" name="imagen" id="imagen" style="margin-bottom: 1rem" accept="image/*">
 
                 @if ($row->imagen)
                     {{ Html::image($row->imagen, $row->titulo, ['class' => 'responsive-img']) }}

@@ -28,7 +28,7 @@
 
         <div class="form-group col-6">
             <label for="fecha">Fecha de naciemiento:</label>
-            <input type="date" class="form-control" id="fecha_nac" name="fecha_nac">
+            <input type="date" class="form-control" id="fecha_nac" name="fecha_nac" required>
         </div>
         <div class="boton-form">
         <button type="submit" class="btn btn-warning" name="guardar" id="guardar">Guardar</button>

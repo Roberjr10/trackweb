@@ -20,59 +20,59 @@ class ProyectoController extends Controller
         $this->middleware('auth');
     }
 
-    public function form(){
+    public function form()
+    {
         return view('proyecto.form');
     }
 
-    public function crear(Request $request){
+    public function crear(Request $request)
+    {
 
         //print_r($_FILES['mptres']);
         $nombreUser = auth()->user()->nick;
-        if($request->hasFile('imagen')) {
+        if ($request->hasFile('imagen')) {
             $file = $request->file('imagen');
 
-            $nombre = $file->getClientOriginalName();
+            $nombreOriginal = $file->getClientOriginalName();
+            $nombre = str_replace(" ", "", $nombreOriginal);
             $path = public_path('imgProyectos/' . $nombre);
             $url = '/imgProyectos/' . $nombre;
-            $image = Image::make($file->getRealPath())->resize(250, 150);
+            $image = Image::make($file->getRealPath())->resize(250, 250);
             $image->save($path);
         }
-        if($request->hasFile('audio')) {
+        if ($request->hasFile('audio')) {
             $archivo = $request->file('audio');
 
-            $nombre_audio = $archivo->getClientOriginalName();
 
+            $nombre_audio_original = $archivo->getClientOriginalName();
+            $nombre_audio = str_replace(" ", "", $nombre_audio_original);
 
-            $archivo->move(public_path().'/audioProyectos/', $nombre_audio);
-            $mp3 = '/audioProyectos/'. $nombre_audio;
+            $archivo->move(public_path() . '/audioProyectos/', $nombre_audio);
+            $mp3 = '/audioProyectos/' . $nombre_audio;
 
         }
 
 
+        /* if($request->hasFile('mptres')) {
 
-       /* if($request->hasFile('mptres')) {
+             $mptres = ($_FILES['mptres']['name']);
+             $name_mp3 = time() . $mptres->getClientOriginalName();
+             $mptres->move(public_path() . "/mptresProyectos/", $name_mp3);
 
-            $mptres = ($_FILES['mptres']['name']);
-            $name_mp3 = time() . $mptres->getClientOriginalName();
-            $mptres->move(public_path() . "/mptresProyectos/", $name_mp3);
+         }*/
+        $proyecto = $request->all();
 
-        }*/
-       $proyecto = $request->all();
-
-     $project = Proyecto::create([
+        Proyecto::create([
             'nombreUser' => $nombreUser,
             'nombre' => $proyecto['nombre'],
             'Descripcion' => $proyecto['Descripcion'],
             'mptres' => $mp3,
             'imagen' => $url,
         ]);
-        if(isset($project)) {
-            return redirect()->intended('homeUser')->withSucces('Has creado el proyecto correctamente');
-        }
-        else {
-            return redirect()->intended('form')->withDanger('No se ha creado el proyecto');
 
-        }
+        return redirect()->intended('homeUser')->withSucces('Has creado el proyecto correctamente');
+
+
     }
 
     public function misProyectos() {
@@ -103,7 +103,8 @@ class ProyectoController extends Controller
         if($request->hasFile('audio')) {
             $archivo = $request->file('audio');
 
-            $nombre_audio = $archivo->getClientOriginalName();
+            $nombre_audio_original = $archivo->getClientOriginalName();
+            $nombre_audio = str_replace(" ", "", $nombre_audio_original);
 
 
             $archivo->move(public_path().'/audioProyectos/', $nombre_audio);
@@ -115,7 +116,9 @@ class ProyectoController extends Controller
         if($request->hasFile('imagen')) {
             $file = $request->file('imagen');
 
-            $nombre = $file->getClientOriginalName();
+            $nombreOriginal = $file->getClientOriginalName();
+          $nombre = str_replace(" ", "", $nombreOriginal);
+
             $path = public_path('imgProyectos/' . $nombre);
             $url = '/imgProyectos/' . $nombre;
             $image = Image::make($file->getRealPath())->resize(250, 150);

@@ -21,9 +21,10 @@ return new class extends Migration
             $table->id();
             $table->string('nombreUser');
             $table->string('nombre');
-            $table->string('Descripcion');
+            $table->text('Descripcion');
             $table->binary('mptres');
             $table->string('imagen');
+            $table->integer('cantidad_list')->default(0);
             $table->integer('cantidad_mg')->default(0);
             $table->timestamps();
 

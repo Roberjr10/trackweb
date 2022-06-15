@@ -37,12 +37,17 @@
         <div class="col-4">
             <!-- lista de fans, buscador y ajustes-->
             <div class="row text-center">
-                <div class="col-4">
+                <div class="col-4 menu_lateral">
                     @if(Auth::check())
                         <ul>
-                            <li>FANS</li>
-                            <li>Búscador</li>
-                            <li>Mi Perfil</li>
+                            @if(auth()->user()->user == 1)
+                                <a href="{{url('homeUser')}}"><li>Home</li></a>
+                            @else
+                                <a href="{{url('home')}}"><li>Home</li></a>
+                            @endif
+                            <a href="{{url('fans')}}"><li>FANS</li></a>
+                            <a href="{{url('buscador')}}"><li>Búscador</li></a>
+                            <a href="{{url('perfil/'. auth()->user()->id)}}"> <li>Mi Perfil</li></a>
                         </ul>
                     @endif
                 </div>
