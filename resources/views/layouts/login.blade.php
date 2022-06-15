@@ -140,7 +140,7 @@
                 //you may add animate.css class for fancy fadeout
                 $(".alert").fadeOut("fast");
             }
-        }, 3000)
+        }, 5000)
 
     });
 

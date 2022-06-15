@@ -24,7 +24,7 @@
         </div>
         <div class="form-group col-6">
             <label for="password">Contraseña:</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <input type="password" class="form-control" id="password" name="password" required minlength="8">
         </div>
 
         <div class="form-group col-6">

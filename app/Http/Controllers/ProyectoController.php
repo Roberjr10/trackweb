@@ -53,13 +53,7 @@ class ProyectoController extends Controller
         }
 
 
-        /* if($request->hasFile('mptres')) {
 
-             $mptres = ($_FILES['mptres']['name']);
-             $name_mp3 = time() . $mptres->getClientOriginalName();
-             $mptres->move(public_path() . "/mptresProyectos/", $name_mp3);
-
-         }*/
         $proyecto = $request->all();
 
         Proyecto::create([

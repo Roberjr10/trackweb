@@ -23,12 +23,12 @@
         </div>
         <div class="form-group col-6">
             <label for="password">Contraseña:</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <input type="password" class="form-control" id="password" name="password" required minlength="8">
         </div>
 
         <div class="form-group col-6">
             <label for="fecha">Fecha de naciemiento:</label>
-            <input type="date" class="form-control" id="fecha_nac" name="fecha_nac" required>
+            <input type="date" class="form-control" id="fecha_nac" name="fecha_nac" required >
         </div>
         <div class="boton-form">
         <button type="submit" class="btn btn-warning" name="guardar" id="guardar">Guardar</button>

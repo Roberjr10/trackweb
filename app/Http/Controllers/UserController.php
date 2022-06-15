@@ -50,9 +50,9 @@ class UserController extends Controller
         ]);
         //Sirve para convertir el objeto request en array
         $data = $request->all();
-        var_dump($data);
 
-        $user = User::create([
+
+       $user =  User::create([
             'nombre' => $data['nombre'],
             'apellidos' => $data['apellidos'],
             'nick' => $data['nick'],
@@ -62,12 +62,10 @@ class UserController extends Controller
             'user' => 1
 
         ]);
-        if(isset($user)) {
-            Auth::login($user);
+         Auth::login($user);
+
             return redirect('homeUser')->withSuccess('Te has registrado a trackweb');
-        }else {
-            return redirect('registroUser')->withDanger('Error, tu nick debe tener 10 caracteres y la contraseña debe de tener una longitud de 8.');
-        }
+
     }
 
     public function salir(Request $request){

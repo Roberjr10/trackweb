@@ -61,13 +61,10 @@ class FanController extends Controller
             'user' => 0
 
         ]);
-        if(Auth::login($fan)) {
+        Auth::login($fan);
 
             return redirect('home')->withSuccess('Te has registrado a trackweb');
-        }else {
-            return back()->withDanger('La contraseña debe ser mayor que 8, el nick ya esta en la base de datos.');
 
-        }
     }
 
     public function salir(Request $request){
